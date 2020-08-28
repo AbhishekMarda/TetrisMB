@@ -7,9 +7,15 @@
 //
 
 #include <iostream>
+#include "globals.h"
+#include "Block.h"
+#include "Engine.h"
+#include "Grid.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+    Block b;
+    b.rotate(CLOCKWISE);
+    
     return 0;
 }

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8F84F2A124F6C7D100B44A13 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8F84F2A024F6C7D100B44A13 /* main.cpp */; };
+		8FF7BF4024F9003B00E55F40 /* Block.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FF7BF3E24F9003B00E55F40 /* Block.cpp */; };
+		8FF7BF4424F9009700E55F40 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FF7BF4224F9009700E55F40 /* Engine.cpp */; };
+		8FF7BF4724F900B400E55F40 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8FF7BF4524F900B400E55F40 /* Grid.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,13 @@
 /* Begin PBXFileReference section */
 		8F84F29D24F6C7D100B44A13 /* Tetris */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tetris; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F84F2A024F6C7D100B44A13 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8FF7BF3E24F9003B00E55F40 /* Block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Block.cpp; sourceTree = "<group>"; };
+		8FF7BF3F24F9003B00E55F40 /* Block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		8FF7BF4124F9006900E55F40 /* globals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = globals.h; sourceTree = "<group>"; };
+		8FF7BF4224F9009700E55F40 /* Engine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
+		8FF7BF4324F9009700E55F40 /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		8FF7BF4524F900B400E55F40 /* Grid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
+		8FF7BF4624F900B400E55F40 /* Grid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +67,40 @@
 		8F84F29F24F6C7D100B44A13 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
+				8FF7BF4124F9006900E55F40 /* globals.h */,
 				8F84F2A024F6C7D100B44A13 /* main.cpp */,
+				8FF7BF4924F9010500E55F40 /* Engine */,
+				8FF7BF4A24F9010B00E55F40 /* Grid */,
+				8FF7BF4824F900F600E55F40 /* Block */,
 			);
 			path = Tetris;
+			sourceTree = "<group>";
+		};
+		8FF7BF4824F900F600E55F40 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				8FF7BF3F24F9003B00E55F40 /* Block.h */,
+				8FF7BF3E24F9003B00E55F40 /* Block.cpp */,
+			);
+			path = Block;
+			sourceTree = "<group>";
+		};
+		8FF7BF4924F9010500E55F40 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				8FF7BF4324F9009700E55F40 /* Engine.h */,
+				8FF7BF4224F9009700E55F40 /* Engine.cpp */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		8FF7BF4A24F9010B00E55F40 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				8FF7BF4624F900B400E55F40 /* Grid.h */,
+				8FF7BF4524F900B400E55F40 /* Grid.cpp */,
+			);
+			path = Grid;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F84F2A124F6C7D100B44A13 /* main.cpp in Sources */,
+				8FF7BF4424F9009700E55F40 /* Engine.cpp in Sources */,
+				8FF7BF4024F9003B00E55F40 /* Block.cpp in Sources */,
+				8FF7BF4724F900B400E55F40 /* Grid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
