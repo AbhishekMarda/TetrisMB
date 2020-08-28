@@ -22,7 +22,7 @@ public:
     Block();
     
     /**
-     Block constructor given information of its constituent units. ooooo
+     Block constructor given information of its constituent units. oo
      @param units vector of units with which Block has to be constructed.
      */
     Block(std::vector<Unit> units);
