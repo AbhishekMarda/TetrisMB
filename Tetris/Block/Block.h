@@ -15,14 +15,14 @@ class Block
 {
 public:
     /**
-     Block default constructor creates a 49x49 block in the middle.
+     Block default constructor creates a 2x2 block in the middle.
      
      This assumes row 0 is the top row, at the beginning of the buffer. Col 0 is the first column from the left.
      */
     Block();
     
     /**
-     Block constructor given information of its constituent units. oo
+     Block constructor given information of its constituent units.
      @param units vector of units with which Block has to be constructed.
      */
     Block(std::vector<Unit> units);

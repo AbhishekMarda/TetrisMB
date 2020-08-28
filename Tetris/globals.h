@@ -9,16 +9,25 @@
 #ifndef globals_h
 #define globals_h
 
+#include <iostream>
+#include <string>
 const int /*could also be chrono*/ TICK_INTERVAL = -1;
 const int /*could also be chrono*/ BLOCK_DROP_INTERVAL = -1;
 const char OCCUPIED_CELL = '#';
 const char EMPTY_CELL = ' ';
 const char GRID_BOUNDARY = 'X';
-const int MAX_ROWS = 35;
-const int MAX_COLS = 10;
+const std::string GRID_ROW_DIVIDER = ".---";
+const char GRID_CORNER = '.';
+const char GRID_COL_DIVIDER = '|';
+const int MAX_ROWS = 35;    // +5 for upcomingBlock
+const int MAX_COLS = 11;
 const int BUFFER_ROWS = 5;
 const int PRINT_ROWS = MAX_ROWS - BUFFER_ROWS;
 const int PRINT_COLS = MAX_COLS;
+const int PRINT_ROW_INDEX = 5;  //the row index in the grid from which printing must begin
+const int GRID_LEFT_MARGIN = 15;
+const int GRID_TOP_MARGIN = 15;
+
 
 enum Direction
 {
