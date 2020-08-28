@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>274ABEDA-A707-42F2-94DA-46F6D846CE87</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>274ABEDA-A707-42F2-94DA-46F6D846CE87.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620312787.82553196</real>
+			<key>timeStoppedRecording</key>
+			<real>620312787.86836505</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>274ABEDA-A707-42F2-94DA-46F6D846CE87</string>
+		</dict>
+		<key>3AF7B37D-F855-4040-8A69-DDA0C58AA165</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3AF7B37D-F855-4040-8A69-DDA0C58AA165.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620302468.77777398</real>
+			<key>timeStoppedRecording</key>
+			<real>620302469.55479896</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>3AF7B37D-F855-4040-8A69-DDA0C58AA165</string>
+		</dict>
+		<key>3CABD5A8-BE21-48C7-A558-D910387D36C8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3CABD5A8-BE21-48C7-A558-D910387D36C8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310231.29919899</real>
+			<key>timeStoppedRecording</key>
+			<real>620310231.87557101</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>3CABD5A8-BE21-48C7-A558-D910387D36C8</string>
+		</dict>
+		<key>40B03BF0-5496-49D8-9873-7A73F07659AB</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>40B03BF0-5496-49D8-9873-7A73F07659AB.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310058.14708698</real>
+			<key>timeStoppedRecording</key>
+			<real>620310058.77003205</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>40B03BF0-5496-49D8-9873-7A73F07659AB</string>
+		</dict>
+		<key>5C6251D9-3A48-4A34-A5BD-7395D97FD75B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>5C6251D9-3A48-4A34-A5BD-7395D97FD75B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620303672.20045102</real>
+			<key>timeStoppedRecording</key>
+			<real>620303673.03511596</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>5C6251D9-3A48-4A34-A5BD-7395D97FD75B</string>
+		</dict>
+		<key>66B894DB-99EB-40F2-9B8D-923977BA0A6D</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>66B894DB-99EB-40F2-9B8D-923977BA0A6D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310239.02299595</real>
+			<key>timeStoppedRecording</key>
+			<real>620310239.61208999</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>66B894DB-99EB-40F2-9B8D-923977BA0A6D</string>
+		</dict>
+		<key>7F433C86-A558-43DE-BF20-3D10A099AB05</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7F433C86-A558-43DE-BF20-3D10A099AB05.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620309810.35339403</real>
+			<key>timeStoppedRecording</key>
+			<real>620309811.26817703</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>7F433C86-A558-43DE-BF20-3D10A099AB05</string>
+		</dict>
+		<key>822F8F8B-92E3-4609-ADF0-42CC941CFF98</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>822F8F8B-92E3-4609-ADF0-42CC941CFF98.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620312276.45009995</real>
+			<key>timeStoppedRecording</key>
+			<real>620312277.29845297</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>822F8F8B-92E3-4609-ADF0-42CC941CFF98</string>
+		</dict>
+		<key>A173AF74-5DD8-4953-BE69-46CEF5C29933</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A173AF74-5DD8-4953-BE69-46CEF5C29933.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310139.64895701</real>
+			<key>timeStoppedRecording</key>
+			<real>620310140.28601205</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>A173AF74-5DD8-4953-BE69-46CEF5C29933</string>
+		</dict>
+		<key>AE864166-45D9-4C5E-9052-81F046EFD463</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>AE864166-45D9-4C5E-9052-81F046EFD463.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310279.27771997</real>
+			<key>timeStoppedRecording</key>
+			<real>620310279.86795902</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>AE864166-45D9-4C5E-9052-81F046EFD463</string>
+		</dict>
+		<key>C775BB37-3FF6-4217-A9E5-0AFD2C9D5A8E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C775BB37-3FF6-4217-A9E5-0AFD2C9D5A8E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620312012.33174598</real>
+			<key>timeStoppedRecording</key>
+			<real>620312013.19564497</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>C775BB37-3FF6-4217-A9E5-0AFD2C9D5A8E</string>
+		</dict>
+		<key>CCDACC3E-1F36-4229-906F-2A01A1A1BC9A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CCDACC3E-1F36-4229-906F-2A01A1A1BC9A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620309844.93116498</real>
+			<key>timeStoppedRecording</key>
+			<real>620309845.50944805</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>CCDACC3E-1F36-4229-906F-2A01A1A1BC9A</string>
+		</dict>
+		<key>DD2861F9-3191-4411-87FE-925022EA99C5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>DD2861F9-3191-4411-87FE-925022EA99C5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310248.64834702</real>
+			<key>timeStoppedRecording</key>
+			<real>620310249.21874499</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>DD2861F9-3191-4411-87FE-925022EA99C5</string>
+		</dict>
+		<key>F5801E9D-D161-4814-8168-B3FF02CC093E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F5801E9D-D161-4814-8168-B3FF02CC093E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Tetris project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Tetris</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Tetris</string>
+			<key>timeStartedRecording</key>
+			<real>620310167.75007796</real>
+			<key>timeStoppedRecording</key>
+			<real>620310168.33688998</real>
+			<key>title</key>
+			<string>Build Tetris</string>
+			<key>uniqueIdentifier</key>
+			<string>F5801E9D-D161-4814-8168-B3FF02CC093E</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
