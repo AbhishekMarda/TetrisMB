@@ -34,4 +34,5 @@ int main(int argc, const char * argv[]) {
     
     g.eliminateRow(9);
     g.printGrid();
+
 }

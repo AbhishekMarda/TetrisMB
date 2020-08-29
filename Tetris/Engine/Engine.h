@@ -17,14 +17,14 @@ class Grid;
 class Engine
 {
 public:
-    Engine();
-    ~Engine();
+    Engine(); //me
+    ~Engine(); //me
     void run();
-    void printInstructions() const;
+    void printInstructions() const; //me
     int move(Direction direction);
     bool gameOver();
-    void printBoard(); //calls m_grid->printGrid() , can remove this func
-    bool isBlockSet() const; //can remove
+    void printBoard();
+    bool isBlockSet() const; //me
     bool checkElimination(); //if necessary, calls m_grid->eliminate
     Block* generateNewBlock();
     void queueBlock(Block* new_block);
