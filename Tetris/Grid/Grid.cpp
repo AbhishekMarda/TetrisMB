@@ -21,6 +21,13 @@ Grid::Grid()
     m_activeBlock = nullptr;
 }
 
+Grid::~Grid()
+{
+    if (m_activeBlock)
+        delete m_activeBlock;
+    
+}
+
 void Grid::printGrid()
 {
     using namespace std;

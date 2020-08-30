@@ -8,7 +8,7 @@
 
 #ifndef globals_h
 #define globals_h
-
+//TODO: documentation of global functions
 #include <iostream>
 #include <string>
 const int /*could also be chrono*/ TICK_INTERVAL = -1;

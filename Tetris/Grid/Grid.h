@@ -28,7 +28,7 @@ public:
     
     
     //Grid Destructor deletes the dynamically allocated block pointer that points to the active block
-    ~Grid() {}
+    ~Grid();
     
     
     /**

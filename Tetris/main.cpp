@@ -14,25 +14,16 @@
 
 int main(int argc, const char * argv[]) {
 
-//    Block b;
-//    b.rotate(CLOCKWISE);
-//
-//    return 0;
-    
-    Grid g;
-    
-    std::vector<Unit> my;
-    my.push_back(Unit(10,4));
-    my.push_back(Unit(10,5));
-    my.push_back(Unit(10,6));
-    my.push_back(Unit(9,5));
-    
-    Block b(my);
-    
-//    g.hardcodeBlock(&b);
-    g.printGrid();
-    
-    g.eliminateRow(9);
-    g.printGrid();
+/*
+ What the main function will look like:
+ 
+ Engine engine;
+ engine.run();
+ 
+ NOTE: we could also probably add optional parameters to run() from argc and argv later on in case we want the user to customize the game.
+ */
+
+    Engine e;
+   
 
 }
