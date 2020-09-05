@@ -41,20 +41,20 @@ public:
     bool moveActiveBlock(Direction direction); //TBA
     
     /**
-     Shift all elements in the grid down, wherever possible.
-     
-     @returns true if there was any element that was shifted down. false if no element was shifted down.
-     */
-    bool moveBoardDown(); //TBA
-    
-    
-    /**
      Ends the game.
      
      This method will only output the final number of points. It is the responsibility of the run() method to ensure that after this method is called, the game is successfully exited.
      */
     void gameOver() const;
+    
+    /**
+     Prints the board
+     
+     Prints the Main Grid , Upcoming Blocks and Score 
+     */
     void printBoard();
+    
+    
     bool isBlockSet() const;
     bool checkElimination(); //TBA
     Block* generateNewBlock(); //TBA

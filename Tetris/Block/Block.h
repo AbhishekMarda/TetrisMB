@@ -61,8 +61,16 @@ public:
      */
     std::vector<Unit> getPositions() const;
     
-private:
+    ///returns a pointer to m_blockGrid
+    char **getGrid() const;
     
+    ///Block Holder
+    char blockGrid[5][5];
+    
+    //initializes a grid to hold a square block
+    void setGrid();
+    
+private:
     std::vector<Unit> m_units;
     ///Left most column of the block
     int m_maxLeft;

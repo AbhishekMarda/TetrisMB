@@ -24,6 +24,5 @@ int main(int argc, const char * argv[]) {
  */
 
     Engine e;
-   
-
+    e.printBoard();
 }
