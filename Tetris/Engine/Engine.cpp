@@ -8,7 +8,11 @@
 
 #include "Engine.h"
 #include "Grid.h"
+#include "Block.h"
+#include <vector>
 #include <iostream>
+#include <random>
+#include <chrono>
 Engine::Engine() : m_points(0)
 {
     printInstructions();
@@ -17,7 +21,7 @@ Engine::Engine() : m_points(0)
     const int MAX_QUEUED_BLOCKS = 3;
     
     for (int i =0; i< MAX_QUEUED_BLOCKS; ++i)
-        queueBlock(generateNewBlock());
+        queueBlock(generateNewBlock(5));
         
 }
 
@@ -71,8 +75,80 @@ size_t Engine::getPoints() const
     return m_points;
 }
 
-//FIXME: documentation and implementation
-Block* Engine::generateNewBlock()
+
+Block* Engine::generateNewBlock(int num_blocks)
 {
-   return nullptr;
+    bool board[5][5];
+    for(int i=0; i<5; ++i)
+        for (int j=0; j<5; ++j)
+            board[i][j]=0;
+    board[2][2] = 1;
+    std::vector<Unit> units(num_blocks);
+    units[0] = Unit(2, 2);
+     
+    std::vector<std::pair<int, int>> possibilities;
+    
+    //blocks around the middle
+    possibilities.push_back(std::make_pair(2, 1));
+    possibilities.push_back(std::make_pair(2, 3));
+    possibilities.push_back(std::make_pair(1, 2));
+    possibilities.push_back(std::make_pair(3, 2));
+
+    for(int blocks_remaining = num_blocks-1; blocks_remaining>0; --blocks_remaining)
+    {
+        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+        std::minstd_rand0 generator (seed);
+        int index = generator()%possibilities.size();
+        std::pair<int, int> curr_coords = possibilities[index];
+        units[blocks_remaining] = Unit(curr_coords.first, curr_coords.second);
+        board[curr_coords.first][curr_coords.second] = 1;
+        possibilities.erase(possibilities.begin()+index);
+        
+        curr_coords.first +=1; //one above mid position
+        
+        if(curr_coords.first<5 &&
+           !board[curr_coords.first][curr_coords.second] &&
+           std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
+           )
+            possibilities.push_back(std::make_pair(curr_coords.first, curr_coords.second));
+        
+        curr_coords.first-=2; //one below mid position
+        
+        if(curr_coords.first>0 &&
+           !board[curr_coords.first][curr_coords.second] &&
+           std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
+           )
+            possibilities.push_back(std::make_pair(curr_coords.first, curr_coords.second));
+        
+        curr_coords.first+=1;
+        curr_coords.second+=1; //right of the mid position
+        
+        if(curr_coords.second<5 &&
+           !board[curr_coords.first][curr_coords.second] &&
+           std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
+           )
+            possibilities.push_back(std::make_pair(curr_coords.first, curr_coords.second));
+        
+        curr_coords.second-=2; //left of the mid position
+        
+        if(curr_coords.second>0 &&
+           !board[curr_coords.first][curr_coords.second] &&
+           std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
+           )
+            possibilities.push_back(std::make_pair(curr_coords.first, curr_coords.second));
+        
+    }
+    //For printing
+    for (int i=0; i<5; ++i)
+    {
+        for(int j=0; j<5; ++j)
+        {
+            std::cout <<(board[i][j]? '#' : '.' );
+        }
+        std::cout<<std::endl;
+    }
+    std::cout<<std::endl;
+    Block* ptr = new Block(units);
+    
+   return ptr;
 }

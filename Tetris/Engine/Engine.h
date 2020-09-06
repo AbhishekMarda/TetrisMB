@@ -57,7 +57,7 @@ public:
     void printBoard();
     bool isBlockSet() const;
     bool checkElimination(); //TBA
-    Block* generateNewBlock(); //TBA
+    Block* generateNewBlock(int num_blocks); //TBA
     
     ///Add block to the Engine's queue of upcoming blocks
     void queueBlock(Block* new_block);

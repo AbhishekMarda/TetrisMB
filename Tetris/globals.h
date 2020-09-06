@@ -42,6 +42,7 @@ enum Rotation
 struct Unit
 {
     Unit(int row, int col):m_row(row), m_col(col){};
+    Unit():m_row(0),m_col(0){};
     int m_row;
     int m_col;
 };
