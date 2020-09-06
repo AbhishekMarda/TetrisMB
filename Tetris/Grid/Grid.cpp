@@ -123,8 +123,11 @@ void Grid::eliminateRow(const int row_number)
 ///
 //}
 
-
-
+//FIXME: implement
+void Grid::placeUpcomingBlock(Block *block_p, int position)
+{
+    return;
+}
 
 
 /* PRIVATE FUNCTIONS */
