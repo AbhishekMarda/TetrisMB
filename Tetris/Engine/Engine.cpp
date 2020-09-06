@@ -17,7 +17,6 @@ Engine::Engine() : m_points(0)
 {
     printInstructions();
     
-    
     const int MAX_QUEUED_BLOCKS = 3;
     
     for (int i =0; i< MAX_QUEUED_BLOCKS; ++i)
@@ -39,6 +38,11 @@ Engine::~Engine()
 void Engine::printInstructions() const
 {
     using namespace std;
+    std::cout << "                 #####  #####  #####  #####  #####  ####     #       #  ####"<<std::endl;
+    std::cout << "                   #    #        #    #   #    #   #         ##     ##  #   #" <<std::endl;
+    std::cout << "                   #    ###      #    ####     #   ####      # #   # #  ####" <<std::endl;
+    std::cout << "                   #    #        #    #  #     #       #     #  # #  #  #   #" <<std::endl;
+    std::cout << "                   #    #####    #    #   #  ##### ####      #   #   #  ####\n\n" <<std::endl;
     cout << "Welcome to TetrisMB © Abhishek Marda and Sanchit Bawri 2020." << endl;
     
     cout <<"The objective of the game is to score the maximum points possible." << endl;
@@ -55,6 +59,39 @@ void Engine::printInstructions() const
     cout << endl<<"In the case that a block is not able to enter the grid completely, game will be over!"<<endl;
     
     cout <<"Enjoy!"<<endl;
+}
+
+void Engine::printBoard()
+{
+    
+    for(int i = 0; i < 4 * PRINT_COLS + 5; i++)
+    {
+        std::cout << EMPTY_CELL;
+    }
+    
+    std::cout << "          UPCOMING BLOCKS   \n";
+    
+    Block *temp;
+    
+    for(int i = 0; i < 3; i++)
+    {
+        temp = m_upcomingBlocks.front();
+        m_grid.placeUpcomingBlock(temp, i);
+        m_upcomingBlocks.pop();
+        m_upcomingBlocks.push(temp);
+    }
+    
+//    for(int i = 0; i < 5; i++)
+//    {
+//        for(int j = 0; j < 5; j++)
+//        {
+//            std::cout << m_upcomingBlocks.front()->blockGrid[i][j];
+//        }
+//        
+//        std::cout << std::endl;
+//    }
+    m_grid.printGrid();
+    
 }
 
 void Engine::queueBlock(Block *new_block)
@@ -78,6 +115,7 @@ size_t Engine::getPoints() const
 
 Block* Engine::generateNewBlock(int num_blocks)
 {
+
     bool board[5][5];
     for(int i=0; i<5; ++i)
         for (int j=0; j<5; ++j)
@@ -151,4 +189,6 @@ Block* Engine::generateNewBlock(int num_blocks)
     Block* ptr = new Block(units);
     
    return ptr;
+
 }
+

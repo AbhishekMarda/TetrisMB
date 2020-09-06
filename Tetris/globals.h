@@ -22,11 +22,12 @@ const char GRID_COL_DIVIDER = '|';
 const int MAX_ROWS = 35;    // +5 for upcomingBlock
 const int MAX_COLS = 11;
 const int BUFFER_ROWS = 5;
+const int BUFFER_COLS = 5;
 const int PRINT_ROWS = MAX_ROWS - BUFFER_ROWS;
 const int PRINT_COLS = MAX_COLS;
 const int PRINT_ROW_INDEX = 5;  //the row index in the grid from which printing must begin
-const int GRID_LEFT_MARGIN = 15;
-const int GRID_TOP_MARGIN = 15;
+const int GRID_LEFT_MARGIN = 5;
+const int GRID_TOP_MARGIN = 1;
 
 
 enum Direction

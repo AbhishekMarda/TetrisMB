@@ -120,7 +120,7 @@ void Grid::eliminateRow(const int row_number)
 
 //int Grid::isMovable(Block* moving_block , Direction direction)
 //{
-//    
+///
 //}
 
 

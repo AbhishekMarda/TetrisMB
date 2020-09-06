@@ -22,6 +22,7 @@ Block::Block()
     m_maxDown=1;
     m_maxLeft = midCol;
     m_maxRight = midCol + 1;
+    setGrid();
 }
 
 Block::Block(std::vector<Unit> units):m_units(units)
@@ -37,6 +38,7 @@ Block::Block(std::vector<Unit> units):m_units(units)
         if (m_maxDown > u.m_row)    m_maxDown = u.m_row;
         if (m_maxUp < u.m_row)      m_maxUp = u.m_row;
     }
+    setGrid();
 }
 
 Block::Block(const Block& other):m_units(other.m_units), m_maxLeft(other.m_maxLeft), m_maxRight(other.m_maxRight), m_maxUp(other.m_maxUp), m_maxDown(other.m_maxDown)
@@ -85,4 +87,23 @@ void Block::rotate(const Rotation rotation)
 std::vector<Unit> Block::getPositions() const
 {
     return m_units;
+}
+
+
+void Block::setGrid()
+{
+    for(int i_r = 0; i_r < 5; i_r++)
+    {
+        for(int i_c = 0; i_c < 5; i_c++)
+        {
+            if(i_r > 1 && i_r < 5 && i_c < 5 && i_c > 1)
+            {
+                blockGrid[i_r][i_c] = OCCUPIED_CELL;
+            }
+            else
+            {
+                blockGrid[i_r][i_c] = EMPTY_CELL;
+            }
+        }
+    }
 }

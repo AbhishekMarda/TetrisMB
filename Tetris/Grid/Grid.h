@@ -72,8 +72,16 @@ public:
      */
     bool isEmpty(int x_coord,int y_coord);
     
-    
-    int isMovable(Block* moving_block ,Direction direction);
+    /**
+     Checks the possibility of movement
+     
+     Checks if the proposed move is valid
+     
+     @param direction UP , DOWN , LEFT , RIGHT
+     
+     @returns int --> 1(True) , 0(False)
+     */
+    int isMovable(Direction direction);
     
     /**
      INLINE FUNCTION : Sets the block pointer passed in parameter to be the Active Block
@@ -82,19 +90,23 @@ public:
      */
     void setActiveBlock(Block* active_block);
     
-//    /**
-//     Places the Upcoming block in the grid buffer
-//
-//     The placed block becomes active and starts to descend as soon the current active block is settled
-//
-//     @param upcoming_block pointer to the block which is in the top of the upcoming_block queue in Engine class
-//     */
-//    void placeUpcomingBlock(Block* upcoming_block);
+    /**
+     Places the upcoming block in the sidebar adjacent to the Grid
+     
+     This function is called by Engine and this updates the buffer columns to print upcoming blocks
+     
+     @param block_p Block that is to be placed
+     
+     @param position Position of the Upcoming Block from the Top (Possible 0 , 1 , 2)
+     */
+    void placeUpcomingBlock(Block* block_p, int position);
+    
 private:
     
     //Variables
     Block *m_activeBlock;
     char m_grid[MAX_ROWS][MAX_COLS];
+    char m_upblk_grid[PRINT_ROWS][BUFFER_COLS];
     
     //Functions
     ///Prints the top boundary of the grid
@@ -108,6 +120,9 @@ private:
     
     ///Determines the grid's indentation from the left
     void leftMargin();
+    
+    ///Prints a particular row from m_upblk_grid
+    void printUpcomingRow(int& row);
 };
 
 /* INLINE FUNCTIONS */
