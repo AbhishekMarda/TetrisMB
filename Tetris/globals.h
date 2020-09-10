@@ -28,7 +28,7 @@ const int PRINT_COLS = MAX_COLS;
 const int PRINT_ROW_INDEX = 5;  //the row index in the grid from which printing must begin
 const int GRID_LEFT_MARGIN = 5;
 const int GRID_TOP_MARGIN = 1;
-
+const int BLOCK_SIZE = 5;
 
 enum Direction
 {

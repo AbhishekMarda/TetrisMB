@@ -46,6 +46,18 @@ Block::Block(const Block& other):m_units(other.m_units), m_maxLeft(other.m_maxLe
     
 }
 
+Block& Block::operator=(const Block &other)
+{
+    if (this == &other)
+        return *this;
+    m_units = other.m_units;
+    m_maxLeft = other.m_maxLeft;
+    m_maxRight = other.m_maxRight;
+    m_maxUp = other.m_maxUp;
+    m_maxDown = other.m_maxDown;
+    return *this;
+}
+
 void Block::move(const Direction dir)
 {
     switch (dir)
@@ -74,7 +86,7 @@ void Block::move(const Direction dir)
             --m_maxRight;
             break;
         }
-        case UP: break;
+        case UP: break; //FIXME: implement
     }
 }
 
@@ -105,5 +117,16 @@ void Block::setGrid()
                 blockGrid[i_r][i_c] = EMPTY_CELL;
             }
         }
+    }
+}
+
+int Block::getMax(Direction dir)
+{
+    switch(dir)
+    {
+        case DOWN: return m_maxDown;
+        case UP: return m_maxUp;
+        case LEFT : return m_maxLeft;
+        case RIGHT : return m_maxRight;
     }
 }

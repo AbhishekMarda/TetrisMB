@@ -20,25 +20,24 @@ public:
     ///Constructor initialiezes grid and queues block for use
     Engine();
     
-    ///Destructor calls delete on grid
+    ///Destructor calls delete on queued blocks
     ~Engine();
     
-    
-    void run();//TBA
-    
-    ///print instructions of the game to the user
-    void printInstructions() const;
+    void run(); //FIXME: implement run
     
     /**
-     Move the block in the specified direction.
+     Moves all blocks and prepares the grid for the next iteration.
      
-     This function will only move the active block. To move all of the other elements of the grid, use moveBoardDown().
+     This funciton will move the active block in the required direction (LEFT, RIGHT, DOWN, or UP), where UP means that the block is rotated by a 90 degree angle. This also will take care of setting a new block as active, generating a new block, and updating points.
      
-     @param direction will move active block in direction LEFT, RIGHT, or DOWN. If UP is input, then the block will be rotated.
+     @param dir the direction for movement of the block
      
-     @returns true if successful. false if unsuccessful.
+     @returns 1 if all successful, 0 if unsuccessful (i.e. new block has been called), -1 if game is over
      */
-    bool moveActiveBlock(Direction direction); //TBA
+    int move(Direction dir);
+    
+    ///Print instructions of the game to the user
+    void printInstructions() const;
     
     /**
      Ends the game.
@@ -56,7 +55,19 @@ public:
     
     
     bool isBlockSet() const;
-    bool checkElimination(); //TBA
+    
+    /**
+     Checks rows that have to be eliminated, eliminates them, and moves them down.
+     
+     @returns number of points due to the elimination
+     */
+    int checkAndEliminateRows();
+    
+    /**
+     Generates a new random block of num_blocks size.
+     
+     @param num_blocks the number of untis that must constitue the upcoming block
+     */
     Block* generateNewBlock(int num_blocks); //TBA
     
     ///Add block to the Engine's queue of upcoming blocks

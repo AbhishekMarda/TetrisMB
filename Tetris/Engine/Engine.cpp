@@ -177,18 +177,48 @@ Block* Engine::generateNewBlock(int num_blocks)
         
     }
     //For printing
-    for (int i=0; i<5; ++i)
-    {
-        for(int j=0; j<5; ++j)
-        {
-            std::cout <<(board[i][j]? '#' : '.' );
-        }
-        std::cout<<std::endl;
-    }
-    std::cout<<std::endl;
+//    for (int i=0; i<5; ++i)
+//    {
+//        for(int j=0; j<5; ++j)
+//        {
+//            std::cout <<(board[i][j]? '#' : '.' );
+//        }
+//        std::cout<<std::endl;
+//    }
+//    std::cout<<std::endl;
     Block* ptr = new Block(units);
     
    return ptr;
 
 }
 
+int Engine::checkAndEliminateRows()
+{
+    return 100 /*MAGIC NUMBERS YAY*/ * m_grid.findRowsToEliminate(); //FIXME: create the point system
+}
+
+int Engine::move(Direction dir)
+{
+    int status = m_grid.moveActiveBlock(dir);
+    if (status == 0)
+    {
+        if (m_grid.activeBlockFullyAppeared())
+        {
+            queueBlock(generateNewBlock(BLOCK_SIZE));
+            m_grid.hardcodeActiveBlock(OCCUPIED_CELL);
+            m_grid.setActiveBlock(m_upcomingBlocks.front());
+            m_upcomingBlocks.pop();
+            int points = checkAndEliminateRows();
+            updatePoints(points);
+            return 0;
+        }
+        else //game over
+        {
+            return -1;
+        }
+    }
+    else //move successful!
+    {
+        return 1;
+    }
+}

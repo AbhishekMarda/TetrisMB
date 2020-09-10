@@ -67,8 +67,12 @@ public:
     ///Block Holder
     char blockGrid[5][5];
     
-    //initializes a grid to hold a square block
+    ///initializes a grid to hold a square block
     void setGrid();
+    
+    ///Return the max bound in that direction
+    int getMax(Direction dir);
+    
     
 private:
     std::vector<Unit> m_units;

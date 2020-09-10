@@ -34,7 +34,7 @@ void Grid::printGrid()
     //modify grid info according to active block position
     if(m_activeBlock != nullptr)
     {
-        hardcodeBlock(m_activeBlock,OCCUPIED_CELL);
+        hardcodeActiveBlock(OCCUPIED_CELL);
     }
     
     //Margin from the top
@@ -76,15 +76,15 @@ void Grid::printGrid()
     //cause it will move down till the next delay
     if(m_activeBlock != nullptr)
     {
-        hardcodeBlock(m_activeBlock,EMPTY_CELL);
+        hardcodeActiveBlock(EMPTY_CELL);
     }
     
 }
 
-void Grid::hardcodeBlock(Block *block_ptr , char info)
+void Grid::hardcodeActiveBlock(char info)
 {
     //retrieve the position of all the units composing the block
-    std::vector<Unit> settled_block = block_ptr -> getPositions();
+    std::vector<Unit> settled_block = m_activeBlock -> getPositions();
     
     int unit_row;
     int unit_col;
@@ -123,17 +123,12 @@ void Grid::eliminateRow(const int row_number)
 ///
 //}
 
-//FIXME: implement
-void Grid::placeUpcomingBlock(Block *block_p, int position)
-{
-    return;
-}
 
 
 /* PRIVATE FUNCTIONS */
 void Grid::printBoundary()
 {
-    //TODO:used because its obvious that cout statements belond to std namespace
+    
     using namespace std;
     //loop runs for more than just the number of columns for alignment according to spaces out grid boxes
     for(int i = 0; i < 4 * PRINT_COLS + 5; i++)
@@ -147,7 +142,7 @@ void Grid::printBoundary()
 
 void Grid::printRowDivider()
 {
-    //TODO:used because its obvious that cout statements belond to std namespace
+    
     using namespace std;
     
     //Margin from left
@@ -170,7 +165,7 @@ void Grid::printRowDivider()
 
 void Grid::topMargin()
 {
-    //TODO:used because its obvious that cout statements belond to std namespace
+    
     using namespace std;
     
     for(int i = 0; i < GRID_TOP_MARGIN; i++)
@@ -182,11 +177,108 @@ void Grid::topMargin()
 
 void Grid::leftMargin()
 {
-    //TODO:used because its obvious that cout statements belond to std namespace
+    
     using namespace std;
     
     for(int i = 0; i < GRID_LEFT_MARGIN; i++)
     {
         cout << EMPTY_CELL;
     }
+}
+
+void Grid::placeUpcomingBlock(Block *block_p, int position)
+{
+    
+}
+
+int Grid::findRowsToEliminate()
+{
+    int count=0;
+    for (int i=MAX_ROWS-1; i>=0; --i)
+    {
+        bool rowFull = true;
+        
+        for (int j = 0; j<MAX_COLS; ++j)
+        {
+            if (m_grid[i][j]!=OCCUPIED_CELL)
+            {
+                rowFull = false;
+                break;
+            }
+        }
+        
+        if (rowFull)
+        {
+            eliminateRow(i);
+            ++i; //don't change i in the next iteration because that row will have been updated
+            ++count;
+        }
+    }
+    
+    return count;
+}
+
+bool Grid::activeBlockFullyAppeared()
+{
+    const std::vector<Unit>& list_of_units = m_activeBlock->getPositions();
+    for (const Unit& u : list_of_units)
+    {
+        //if the row is less in than the buffer rows (i.e. the rows on top, then the block has not fully appeared.
+        //we don't need to check for the column, since we anyway ensure that the block never goes past the column bounds
+        if(u.m_row < BUFFER_ROWS) //TODO: check if equality is allowed
+            return false;
+    }
+    
+    return true;
+}
+
+bool Grid::moveActiveBlock(Direction dir)
+{
+    Block b = *m_activeBlock;
+    switch(dir)
+    {
+        case DOWN:
+        {
+            b.move(DOWN);
+            if (b.getMax(DOWN)>=MAX_ROWS)
+                return false;
+            break;
+        }
+            
+        case LEFT:
+        {
+            Block b = *m_activeBlock;
+            b.move(LEFT);
+            if (b.getMax(LEFT)<0)
+                return false;
+            break;
+        }
+            
+        case RIGHT:
+        {
+            Block b = *m_activeBlock;
+            b.move(RIGHT);
+            if (b.getMax(RIGHT)>=MAX_COLS)
+                return false;
+            break;
+        }
+            
+        case UP:
+        {
+            Block b = *m_activeBlock;
+            b.rotate(CLOCKWISE);
+            if (b.getMax(RIGHT)>=MAX_COLS || b.getMax(UP)<0 || b.getMax(LEFT)<0 || b.getMax(DOWN)>=MAX_ROWS)
+                return false;
+            break;
+        }
+    }
+    
+    const std::vector<Unit>& list_of_units = b.getPositions();
+    for (const Unit& u : list_of_units)
+    {
+        if (m_grid[u.m_row][u.m_col] == OCCUPIED_CELL)
+            return false;
+    }
+    *m_activeBlock = b;
+    return true;
 }

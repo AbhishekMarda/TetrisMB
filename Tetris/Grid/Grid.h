@@ -38,18 +38,20 @@ public:
      */
     void printGrid();
     
-    //TODO:2nd parameter is just to undo the hardcoded block
     /**
      Encodes settled block in m_grid indicies
      
      Once a Block is settled the corresponding location of the block on the grid is stored by setting the respective EMPTY CELLS to OCCUPIED CELLS
      
-     @param block_ptr pointer to the settled block
-     
-     @param info which character must be used to hardcode the block
      */
-    void hardcodeBlock(Block *block_ptr, char info);
+    void hardcodeActiveBlock(char info);
     
+    /**
+     Locate all the rows to eliminate and remove them.
+     
+     @returns: number of rows removed
+     */
+    int findRowsToEliminate();
     
     /**
      Eliminates a saturated row from the grid
@@ -79,9 +81,9 @@ public:
      
      @param direction UP , DOWN , LEFT , RIGHT
      
-     @returns int --> 1(True) , 0(False)
+     @returns True if movable, otherwise false
      */
-    int isMovable(Direction direction);
+    bool isMovable(Direction direction);
     
     /**
      INLINE FUNCTION : Sets the block pointer passed in parameter to be the Active Block
@@ -99,7 +101,22 @@ public:
      
      @param position Position of the Upcoming Block from the Top (Possible 0 , 1 , 2)
      */
-    void placeUpcomingBlock(Block* block_p, int position);
+    void placeUpcomingBlock(Block* block_p, int position);//FIXME: Implement placeUpcomingBlock
+    
+    /**
+     Checks if the active block has completely entered the grid
+     
+     @returns true if block has completely entered the grid, false if it hasn't
+     */
+    bool activeBlockFullyAppeared();
+    
+    /**
+     Move the block in the specified direction
+     
+     @param dir Direction to move the block in
+     @returns true if move was successfully moved, false if there was an obstruction
+     */
+    bool moveActiveBlock(Direction dir);
     
 private:
     
