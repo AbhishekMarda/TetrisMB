@@ -62,11 +62,23 @@ void Engine::printInstructions() const
     cout << endl<<"In the case that a block is not able to enter the grid completely, game will be over!"<<endl;
     
     cout <<"Enjoy!"<<endl;
+    
+    cout<<"Type 'start' to start or 'quit' to quit now.\n";
+    char c[10];
+    cin >> c;
+    if (strncmp(c, "quit", 4)==0)
+        exit(0);
+    else if (strncmp(c, "start", 4)!=0)
+    {
+        cout<<"Try spelling another day"<<endl;
+        exit(0);
+    }
+    
 }
 
 void Engine::printBoard()
 {
-    
+    clearScreen();
     for(int i = 0; i < 4 * PRINT_COLS + 5; i++)
     {
         std::cout << EMPTY_CELL;
@@ -183,7 +195,17 @@ Block* Engine::generateNewBlock(int num_blocks)
 
 int Engine::checkAndEliminateRows()
 {
-    return 100 /*MAGIC NUMBERS YAY*/ * m_grid.findRowsToEliminate(); //FIXME: create the point system
+    using namespace std::chrono;
+    std::vector<int> rows_to_eliminate = m_grid.findRowsToEliminate();
+    printBoard();
+    std::this_thread::sleep_for(1s);
+    
+    unsigned int len = (unsigned int) rows_to_eliminate.size();
+    for(int i=len-1; i>=0; --i)
+    {
+        m_grid.fillEliminatedGapAt(rows_to_eliminate[i]);
+    }
+    return 100 /*MAGIC NUMBERS YAY*/ * rows_to_eliminate.size(); //FIXME: create the point system
 }
 
 int Engine::move(Direction dir)
@@ -227,7 +249,7 @@ void Engine::run()
         while(delay >= 0)
         {
             sleep_for(0.01s);
-            delay -= 0.01;
+            delay -= TICK_INTERVAL;
             if(kbhit())
             {
                 switch ((char)getchar())
@@ -247,11 +269,11 @@ void Engine::run()
                     default:
                         break;
                 }
-                clearScreen();
+                
                 printBoard();
             }
         }
-        clearScreen();
+        
         printBoard();
     }
     

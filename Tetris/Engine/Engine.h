@@ -53,9 +53,6 @@ public:
      */
     void printBoard();
     
-    
-    bool isBlockSet() const;
-    
     /**
      Checks rows that have to be eliminated, eliminates them, and moves them down.
      

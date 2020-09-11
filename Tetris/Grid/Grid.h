@@ -11,6 +11,7 @@
 
 #include "globals.h"
 #include "Block.h"
+#include <vector>
 class Grid
 {
 public:
@@ -51,20 +52,26 @@ public:
      
      @returns: number of rows removed
      */
-    int findRowsToEliminate();
+    std::vector<int> findRowsToEliminate();
     
     /**
      Eliminates a saturated row from the grid
      
-     Called by class Engine .
-     
-     This function shifts all the rows down by 1 row (excluding the buffer rows)
+     This function blanks out a row.
      
      @param row_number the row which is to be eliminated
      */
     void eliminateRow(const int row_number);
     
+    /**
+     Moves down all rows above an eliminated row.
+     
+     Should be typically called after findRowsToEliminate().
+     
+     @param row_number the row above which the rows are to be moved down
+     */
     
+    void fillEliminatedGapAt(const int row_number);
     /**
      INLINE FUNCTION : Checks if the Desired cell is empty or occupied
      

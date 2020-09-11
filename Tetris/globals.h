@@ -12,7 +12,7 @@
 #include <string>
 
 /* TIME CONSTANTS*/
-//const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
+const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
 const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 1;
 
 /* CELL VALUES */
@@ -26,7 +26,7 @@ const char GRID_CORNER = '.';
 const char GRID_COL_DIVIDER = '|';
 
 /* GRID SIZE */
-const int MAX_ROWS = 35;    // +5 for upcomingBlock
+const int MAX_ROWS = 30;    // +5 for upcomingBlock
 const int MAX_COLS = 11;
 const int BUFFER_ROWS = 5;
 const int UPBLK_COLS = 5;

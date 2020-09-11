@@ -7,7 +7,9 @@
 //
 
 #include "Grid.h"
-
+#include <chrono>
+#include <vector>
+#include <thread>
 Grid::Grid()
 {
     for(int row_i = 0; row_i < MAX_ROWS; row_i++)
@@ -106,25 +108,6 @@ void Grid::hardcodeActiveBlock(char info)
 }
 
 
-void Grid::eliminateRow(const int row_number)
-{
-    //delete targeted row and shift information
-    for(int row_i = row_number; row_i > PRINT_ROW_INDEX; row_i--)
-    {
-        for(int col_i = 0; col_i < MAX_COLS; col_i++)
-        {
-            m_grid[row_i][col_i] = m_grid[row_i - 1][col_i];
-        }
-    }
-    
-    //set top row to be empty
-    for(int i = 0; i < MAX_COLS; i++)
-    {
-        m_grid[PRINT_ROW_INDEX][i] = EMPTY_CELL;
-    }
-}
-
-
 void Grid::placeUpcomingBlock(Block *block_p, int position)
 {
     int start_row = position * 6;
@@ -144,9 +127,37 @@ void Grid::placeUpcomingBlock(Block *block_p, int position)
     }
 }
 
-int Grid::findRowsToEliminate()
+void Grid::eliminateRow(const int row_number)
 {
-    int count=0;
+    for(int i=0; i<MAX_COLS; ++i)
+    {
+        m_grid[row_number][i]=EMPTY_CELL;
+    }
+}
+
+
+void Grid::fillEliminatedGapAt(const int row_number)
+{
+    //delete targeted row and shift information
+    for(int row_i = row_number; row_i > PRINT_ROW_INDEX; row_i--)
+    {
+        for(int col_i = 0; col_i < MAX_COLS; col_i++)
+        {
+            m_grid[row_i][col_i] = m_grid[row_i - 1][col_i];
+        }
+    }
+    
+    //set top row to be empty
+    for(int i = 0; i < MAX_COLS; i++)
+    {
+        m_grid[PRINT_ROW_INDEX][i] = EMPTY_CELL;
+    }
+}
+
+std::vector<int> Grid::findRowsToEliminate()
+{
+    
+    std::vector<int> eliminated_rows;
     for (int i=MAX_ROWS-1; i>=0; --i)
     {
         bool rowFull = true;
@@ -163,12 +174,13 @@ int Grid::findRowsToEliminate()
         if (rowFull)
         {
             eliminateRow(i);
+            eliminated_rows.push_back(i);
             ++i; //don't change i in the next iteration because that row will have been updated
-            ++count;
         }
     }
     
-    return count;
+    //note that at this point the integers in eliminated_rows are in descending order.
+    return eliminated_rows;
 }
 
 bool Grid::activeBlockFullyAppeared()
