@@ -193,10 +193,10 @@ int Engine::move(Direction dir)
     {
         if (m_grid.activeBlockFullyAppeared())
         {
-            queueBlock(generateNewBlock(BLOCK_SIZE));
             m_grid.hardcodeActiveBlock(OCCUPIED_CELL);
             m_grid.setActiveBlock(m_upcomingBlocks.front());
             m_upcomingBlocks.pop();
+            queueBlock(generateNewBlock(BLOCK_SIZE));
             int points = checkAndEliminateRows();
             updatePoints(points);
             return 0;
@@ -221,9 +221,8 @@ void Engine::run()
     printBoard();
     
     double delay;
-    while(true)
+    while(move(DOWN) != -1)
     {
-        move(DOWN);
         delay = BLOCK_DROP_INTERVAL;
         while(delay >= 0)
         {
