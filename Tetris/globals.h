@@ -13,7 +13,7 @@
 
 /* TIME CONSTANTS*/
 const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
-const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 1;
+const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 0.75;
 
 /* CELL VALUES */
 const char OCCUPIED_CELL = '#';
@@ -47,6 +47,14 @@ const char L = 'a';
 const char R = 'd';
 const char U = 'w';
 const char D = 's';
+
+/* TEXT COLORS IN LINUX CLI */
+const char BEGIN_CYAN_REGULAR[] = "\033[;36m";
+const char BEGIN_GREEN_REGULAR[] = "\033[;32m";
+const char BEGIN_MAGENTA_REGULAR[] = "\033[;35m";
+const char BEGIN_RED_BGBLACK[] = "\033[31;40m";
+const char RESET_FORMAT[] = "\033[0m";
+
 
 enum Direction
 {

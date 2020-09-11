@@ -10,6 +10,8 @@
 #include <chrono>
 #include <vector>
 #include <thread>
+
+
 Grid::Grid()
 {
     for(int row_i = 0; row_i < MAX_ROWS; row_i++)
@@ -51,7 +53,9 @@ void Grid::printGrid()
     for(int row_i = PRINT_ROW_INDEX; row_i < MAX_ROWS; row_i++)
     {
         printRowDivider();
+        cout << BEGIN_GREEN_REGULAR;
         printUpcomingRow(upcoming_row);
+        cout <<RESET_FORMAT;
         ++upcoming_row;
         leftMargin();
         
@@ -60,14 +64,18 @@ void Grid::printGrid()
         for(int col_i = 0; col_i < PRINT_COLS; col_i++)
         {
             cout << GRID_COL_DIVIDER << EMPTY_CELL;
-            cout << m_grid[row_i][col_i];
+            cout << BEGIN_CYAN_REGULAR <<m_grid[row_i][col_i] <<RESET_FORMAT;
             cout << EMPTY_CELL;
         }
         
         cout << GRID_COL_DIVIDER;
         
         cout << EMPTY_CELL << GRID_BOUNDARY;
+        
+        cout << BEGIN_GREEN_REGULAR;
         printUpcomingRow(upcoming_row);
+        cout <<RESET_FORMAT;
+        
         ++upcoming_row;
     }
     

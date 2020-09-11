@@ -12,21 +12,19 @@
 #include "Engine.h"
 #include "Grid.h"
 #include "Utilities.h"
+#include <stdlib.h>
 
-
+using namespace std;
 int main()
 {
+    
 
-//    while(true)
-//    {
-//        if(kbhit())
-//        {
-//            std::cout << "You pressed " << (char)getchar() <<std::endl;
-//        }
-//    }
+//cout << "\033[;32mGreen Text\033[0m\n";
+//cout << "\033[4;33mYellow underlined text\033[0m\n";
+//cout << "\033[;34mBlue text\033[0m\n";
+    
     Engine engine;
     engine.run();
-        
 /*
  What the main function will look like:
  

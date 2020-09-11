@@ -15,6 +15,8 @@
 #include <random>
 #include <chrono>
 #include <thread>
+
+
 Engine::Engine() : m_points(0)
 {
     printInstructions();
@@ -41,22 +43,24 @@ Engine::~Engine()
 void Engine::printInstructions() const
 {
     using namespace std;
+    std::cout<<BEGIN_MAGENTA_REGULAR;
     std::cout << "                 #####  #####  #####  #####  #####  ####     #       #  ####"<<std::endl;
     std::cout << "                   #    #        #    #   #    #   #         ##     ##  #   #" <<std::endl;
     std::cout << "                   #    ###      #    ####     #   ####      # #   # #  ####" <<std::endl;
     std::cout << "                   #    #        #    #  #     #       #     #  # #  #  #   #" <<std::endl;
     std::cout << "                   #    #####    #    #   #  ##### ####      #   #   #  ####\n\n" <<std::endl;
+    std::cout<<RESET_FORMAT;
     cout << "Welcome to TetrisMB © Abhishek Marda and Sanchit Bawri 2020." << endl;
     
     cout <<"The objective of the game is to score the maximum points possible." << endl;
     cout <<endl<< "How to play:" <<endl;
     
-    cout << "A block will advance from the top of the grid to the bottom. You must place the block in such a way that maximum eliminations are possible. An elimination occurs when an entire row is filled. That row is then deleted, giving you more space to place blocks."<<endl;
+    cout << "A block will advance from the top of the grid to the bottom. You must place the block in such a way that maximum eliminations are possible.\n An elimination occurs when an entire row is filled. That row is then deleted, giving you more space to place blocks.\n"<<endl;
     
-    cout<<"More the eliminations, more your points. Consecutive eliminations will lead to more points, so place your blocks wisely!"<<endl;
+    cout<<"More the eliminations, more your points. Consecutive eliminations will lead to more points, so place your blocks wisely!\n"<<endl;
     cout <<"You can place the block using the following methods:"<<endl;
     cout <<"1. By pressing the left and right arrow keys to move the block left or right."<<endl;
-    cout <<"2. By pressing the up arrow key to rotate the block."<<endl;
+    cout <<"2. By pressing the up arrow key to rotate the block in a clockwise direction."<<endl;
     cout <<"3. By pressing the down arrow key to push the block down faster."<<endl;
     
     cout << endl<<"In the case that a block is not able to enter the grid completely, game will be over!"<<endl;
@@ -198,14 +202,15 @@ int Engine::checkAndEliminateRows()
     using namespace std::chrono;
     std::vector<int> rows_to_eliminate = m_grid.findRowsToEliminate();
     printBoard();
-    std::this_thread::sleep_for(1s);
     
-    unsigned int len = (unsigned int) rows_to_eliminate.size();
+    std::this_thread::sleep_for(0.4s);
+    
+    int len = (int) rows_to_eliminate.size();
     for(int i=len-1; i>=0; --i)
     {
         m_grid.fillEliminatedGapAt(rows_to_eliminate[i]);
     }
-    return 100 /*MAGIC NUMBERS YAY*/ * rows_to_eliminate.size(); //FIXME: create the point system
+    return 100 /*MAGIC NUMBERS YAY*/ * len; //FIXME: create the point system
 }
 
 int Engine::move(Direction dir)
@@ -277,12 +282,16 @@ void Engine::run()
         printBoard();
     }
     
-    std::cout << "/////////////////////////////////////////////////////////\n";
-    std::cout << "/////////////////////////////////////////////////////////\n";
-    std::cout << "/////////////////////////////////////////////////////////\n";
-    std::cout << "///////////////////////GAME ENDED////////////////////////\n";
-    std::cout << "/////////////////////////////////////////////////////////\n";
-    std::cout << "/////////////////////////////////////////////////////////\n";
-    std::cout << "/////////////////////////////////////////////////////////\n";
-
+    gameOver();
+}
+void Engine::gameOver() const
+{
+    clearScreen();
+    std::cout << BEGIN_RED_BGBLACK;
+    std::cout << "   ####      #       #     #      ######      #####    #        #    ######    ###### \n";
+    std::cout << "  #         # #     # #   # #     #          #     #    #      #     #         #    # \n";
+    std::cout << "  #  ##    #####    #  # #  #     ######     #     #     #    #      ######    ###### \n";
+    std::cout << "  #   #   #     #   #   #   #     #          #     #      #  #       #         ###    \n";
+    std::cout << "   ####   #     #   #       #     ######      #####        ##        ######    #  ### \n";
+    std::cout << RESET_FORMAT;
 }
