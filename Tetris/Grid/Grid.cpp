@@ -247,7 +247,7 @@ bool Grid::moveActiveBlock(Direction dir)
             
         case UP:
         {
-            b.rotate(CLOCKWISE);
+            b.move(UP);
             if (b.getMax(RIGHT)>=MAX_COLS || b.getMax(UP)<0 || b.getMax(LEFT)<0 || b.getMax(DOWN)>=MAX_ROWS)
                 return false;
             break;

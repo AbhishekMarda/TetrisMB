@@ -68,11 +68,26 @@ public:
     char blockGrid[5][5];
     
     ///initializes a grid to hold a square block
-    void setGrid();
+    void setGrid(char grid[5][5]);
     
     ///Return the max bound in that direction
     int getMax(Direction dir);
     
+    void printGrid(char g[5][5])
+    {
+        for(int r = 0; r < 5; r++)
+        {
+            for(int c = 0; c < 5; c++)
+            {
+                std::cout << g[r][c] << " ";
+            }
+            
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        std::cout << std::endl;
+        std::cout << std::endl;
+    }
     
     
     
@@ -87,7 +102,6 @@ private:
     ///Lowest row of the block
     int m_maxDown;
 };
-
 
 
 #endif /* Block_h */

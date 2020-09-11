@@ -13,7 +13,7 @@
 
 /* TIME CONSTANTS*/
 const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
-const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 1;
+const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 0.75;
 
 /* CELL VALUES */
 const char OCCUPIED_CELL = '#';
