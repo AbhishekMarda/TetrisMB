@@ -74,6 +74,8 @@ public:
     int getMax(Direction dir);
     
     
+    
+    
 private:
     std::vector<Unit> m_units;
     ///Left most column of the block

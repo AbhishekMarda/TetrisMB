@@ -8,27 +8,45 @@
 
 #ifndef globals_h
 #define globals_h
-//TODO: documentation of global functions
 #include <iostream>
 #include <string>
-const int /*could also be chrono*/ TICK_INTERVAL = -1;
-const int /*could also be chrono*/ BLOCK_DROP_INTERVAL = -1;
+
+/* TIME CONSTANTS*/
+//const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
+const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 1;
+
+/* CELL VALUES */
 const char OCCUPIED_CELL = '#';
 const char EMPTY_CELL = ' ';
 const char GRID_BOUNDARY = 'X';
+
+/* GRID CONSTRUCTORS */
 const std::string GRID_ROW_DIVIDER = ".---";
 const char GRID_CORNER = '.';
 const char GRID_COL_DIVIDER = '|';
+
+/* GRID SIZE */
 const int MAX_ROWS = 35;    // +5 for upcomingBlock
 const int MAX_COLS = 11;
 const int BUFFER_ROWS = 5;
-const int BUFFER_COLS = 5;
+const int UPBLK_COLS = 5;
+const int UPBLK_ROWS = 17;
 const int PRINT_ROWS = MAX_ROWS - BUFFER_ROWS;
 const int PRINT_COLS = MAX_COLS;
 const int PRINT_ROW_INDEX = 5;  //the row index in the grid from which printing must begin
+
+/* GRID ALIGNMENT */
 const int GRID_LEFT_MARGIN = 5;
 const int GRID_TOP_MARGIN = 1;
+
+/* BLOCK SIZE */
 const int BLOCK_SIZE = 5;
+
+/* MOVE DIRECTIONS */
+const char L = 'a';
+const char R = 'd';
+const char U = 'w';
+const char D = 's';
 
 enum Direction
 {

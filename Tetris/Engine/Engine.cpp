@@ -9,14 +9,17 @@
 #include "Engine.h"
 #include "Grid.h"
 #include "Block.h"
+#include "Utilities.h"
 #include <vector>
 #include <iostream>
 #include <random>
 #include <chrono>
+#include <thread>
 Engine::Engine() : m_points(0)
 {
     printInstructions();
     
+    m_grid.setActiveBlock(generateNewBlock(5));
     const int MAX_QUEUED_BLOCKS = 3;
     
     for (int i =0; i< MAX_QUEUED_BLOCKS; ++i)
@@ -81,15 +84,6 @@ void Engine::printBoard()
         m_upcomingBlocks.push(temp);
     }
     
-//    for(int i = 0; i < 5; i++)
-//    {
-//        for(int j = 0; j < 5; j++)
-//        {
-//            std::cout << m_upcomingBlocks.front()->blockGrid[i][j];
-//        }
-//        
-//        std::cout << std::endl;
-//    }
     m_grid.printGrid();
     
 }
@@ -176,17 +170,12 @@ Block* Engine::generateNewBlock(int num_blocks)
             possibilities.push_back(std::make_pair(curr_coords.first, curr_coords.second));
         
     }
-    //For printing
-//    for (int i=0; i<5; ++i)
-//    {
-//        for(int j=0; j<5; ++j)
-//        {
-//            std::cout <<(board[i][j]? '#' : '.' );
-//        }
-//        std::cout<<std::endl;
-//    }
-//    std::cout<<std::endl;
     Block* ptr = new Block(units);
+
+    for (const Unit& u : units)
+    {
+        ptr->blockGrid[u.m_row][u.m_col] = OCCUPIED_CELL;
+    }
     
    return ptr;
 
@@ -200,7 +189,7 @@ int Engine::checkAndEliminateRows()
 int Engine::move(Direction dir)
 {
     int status = m_grid.moveActiveBlock(dir);
-    if (status == 0)
+    if (status == 0 && dir == DOWN)
     {
         if (m_grid.activeBlockFullyAppeared())
         {
@@ -221,4 +210,58 @@ int Engine::move(Direction dir)
     {
         return 1;
     }
+}
+
+
+void Engine::run()
+{
+    using namespace std::this_thread; // sleep_for, sleep_until
+    using namespace std::chrono; // nanoseconds, system_clock, seconds
+    
+    printBoard();
+    
+    double delay;
+    while(true)
+    {
+        move(DOWN);
+        delay = BLOCK_DROP_INTERVAL;
+        while(delay >= 0)
+        {
+            sleep_for(0.01s);
+            delay -= 0.01;
+            if(kbhit())
+            {
+                switch ((char)getchar())
+                {
+                    case L:
+                        move(LEFT);
+                        break;
+                    case R:
+                        move(RIGHT);
+                        break;
+                    case D:
+                        move(DOWN);
+                        break;
+                    case U:
+                        move(UP);
+                        break;
+                    default:
+                        break;
+                }
+                clearScreen();
+                printBoard();
+            }
+        }
+        clearScreen();
+        printBoard();
+    }
+    
+    std::cout << "/////////////////////////////////////////////////////////\n";
+    std::cout << "/////////////////////////////////////////////////////////\n";
+    std::cout << "/////////////////////////////////////////////////////////\n";
+    std::cout << "///////////////////////GAME ENDED////////////////////////\n";
+    std::cout << "/////////////////////////////////////////////////////////\n";
+    std::cout << "/////////////////////////////////////////////////////////\n";
+    std::cout << "/////////////////////////////////////////////////////////\n";
+
 }

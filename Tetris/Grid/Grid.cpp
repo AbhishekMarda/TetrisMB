@@ -18,7 +18,7 @@ Grid::Grid()
         }
     }
     
-    m_activeBlock = nullptr;
+    m_activeBlock = new Block;
 }
 
 Grid::~Grid()
@@ -31,6 +31,7 @@ Grid::~Grid()
 void Grid::printGrid()
 {
     using namespace std;
+    int upcoming_row = 0;
     //modify grid info according to active block position
     if(m_activeBlock != nullptr)
     {
@@ -45,10 +46,11 @@ void Grid::printGrid()
     printBoundary();
     
     //print the grid with side boundaries
-    for(int row_i = PRINT_ROW_INDEX; row_i < PRINT_ROWS; row_i++)
+    for(int row_i = PRINT_ROW_INDEX; row_i < MAX_ROWS; row_i++)
     {
         printRowDivider();
-        
+        printUpcomingRow(upcoming_row);
+        ++upcoming_row;
         leftMargin();
         
         cout << GRID_BOUNDARY << EMPTY_CELL;
@@ -62,11 +64,15 @@ void Grid::printGrid()
         
         cout << GRID_COL_DIVIDER;
         
-        cout << EMPTY_CELL << GRID_BOUNDARY << endl;
+        cout << EMPTY_CELL << GRID_BOUNDARY;
+        printUpcomingRow(upcoming_row);
+        ++upcoming_row;
     }
     
     //print last row Divider
     printRowDivider();
+    printUpcomingRow(upcoming_row);
+    ++upcoming_row;
     
     //print the bottom boundary
     leftMargin();
@@ -118,77 +124,24 @@ void Grid::eliminateRow(const int row_number)
     }
 }
 
-//int Grid::isMovable(Block* moving_block , Direction direction)
-//{
-///
-//}
-
-
-
-/* PRIVATE FUNCTIONS */
-void Grid::printBoundary()
-{
-    
-    using namespace std;
-    //loop runs for more than just the number of columns for alignment according to spaces out grid boxes
-    for(int i = 0; i < 4 * PRINT_COLS + 5; i++)
-    {
-        cout << GRID_BOUNDARY;
-    }
-    
-    cout << endl;
-}
-
-
-void Grid::printRowDivider()
-{
-    
-    using namespace std;
-    
-    //Margin from left
-    leftMargin();
-    
-    //Grid's Left Boundary
-    cout << GRID_BOUNDARY << EMPTY_CELL;
-    
-    for(int i = 0; i < PRINT_COLS; i++)
-    {
-        cout << GRID_ROW_DIVIDER;
-    }
-    
-    cout << GRID_CORNER;
-    
-    //Grid's Right Boundary
-    cout << EMPTY_CELL << GRID_BOUNDARY << endl;
-}
-
-
-void Grid::topMargin()
-{
-    
-    using namespace std;
-    
-    for(int i = 0; i < GRID_TOP_MARGIN; i++)
-    {
-        cout << endl;
-    }
-}
-
-
-void Grid::leftMargin()
-{
-    
-    using namespace std;
-    
-    for(int i = 0; i < GRID_LEFT_MARGIN; i++)
-    {
-        cout << EMPTY_CELL;
-    }
-}
 
 void Grid::placeUpcomingBlock(Block *block_p, int position)
 {
-    
+    int start_row = position * 6;
+    int end_row = start_row + 4;
+    int row_i = start_row;
+    int block_row_i = 0;
+    while(row_i <= end_row)
+    {
+        int col_i = 0;
+        while(col_i < UPBLK_COLS)
+        {
+            m_upblk_grid[row_i][col_i] = block_p->blockGrid[block_row_i][col_i];
+            col_i++;
+        }
+        row_i++;
+        block_row_i++;
+    }
 }
 
 int Grid::findRowsToEliminate()
@@ -232,6 +185,25 @@ bool Grid::activeBlockFullyAppeared()
     return true;
 }
 
+
+void Grid::printUpcomingRow(const int& row)
+{
+    if(row >= UPBLK_ROWS)
+    {
+        std::cout << std::endl;
+        return;
+    }
+    int row_i = row;
+    int col_i = 0;
+    std::cout << "     ";
+    while(col_i < UPBLK_COLS)
+    {
+        std::cout << m_upblk_grid[row_i][col_i];
+        col_i++;
+    }
+    std::cout << std::endl;
+}
+
 bool Grid::moveActiveBlock(Direction dir)
 {
     Block b = *m_activeBlock;
@@ -247,7 +219,6 @@ bool Grid::moveActiveBlock(Direction dir)
             
         case LEFT:
         {
-            Block b = *m_activeBlock;
             b.move(LEFT);
             if (b.getMax(LEFT)<0)
                 return false;
@@ -256,7 +227,6 @@ bool Grid::moveActiveBlock(Direction dir)
             
         case RIGHT:
         {
-            Block b = *m_activeBlock;
             b.move(RIGHT);
             if (b.getMax(RIGHT)>=MAX_COLS)
                 return false;
@@ -265,7 +235,6 @@ bool Grid::moveActiveBlock(Direction dir)
             
         case UP:
         {
-            Block b = *m_activeBlock;
             b.rotate(CLOCKWISE);
             if (b.getMax(RIGHT)>=MAX_COLS || b.getMax(UP)<0 || b.getMax(LEFT)<0 || b.getMax(DOWN)>=MAX_ROWS)
                 return false;
@@ -281,4 +250,67 @@ bool Grid::moveActiveBlock(Direction dir)
     }
     *m_activeBlock = b;
     return true;
+}
+
+
+
+/* PRIVATE FUNCTIONS */
+void Grid::printBoundary()
+{
+    
+    using namespace std;
+    //loop runs for more than just the number of columns for alignment according to spaces out grid boxes
+    for(int i = 0; i < 4 * PRINT_COLS + 5; i++)
+    {
+        cout << GRID_BOUNDARY;
+    }
+    
+    cout << endl;
+}
+
+
+void Grid::printRowDivider()
+{
+    
+    using namespace std;
+    
+    //Margin from left
+    leftMargin();
+    
+    //Grid's Left Boundary
+    cout << GRID_BOUNDARY << EMPTY_CELL;
+    
+    for(int i = 0; i < PRINT_COLS; i++)
+    {
+        cout << GRID_ROW_DIVIDER;
+    }
+    
+    cout << GRID_CORNER;
+    
+    //Grid's Right Boundary
+    cout << EMPTY_CELL << GRID_BOUNDARY;
+}
+
+
+void Grid::topMargin()
+{
+    
+    using namespace std;
+    
+    for(int i = 0; i < GRID_TOP_MARGIN; i++)
+    {
+        cout << endl;
+    }
+}
+
+
+void Grid::leftMargin()
+{
+    
+    using namespace std;
+    
+    for(int i = 0; i < GRID_LEFT_MARGIN; i++)
+    {
+        cout << EMPTY_CELL;
+    }
 }

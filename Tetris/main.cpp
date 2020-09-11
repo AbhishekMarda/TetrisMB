@@ -11,54 +11,21 @@
 #include "Block.h"
 #include "Engine.h"
 #include "Grid.h"
-#include <stdio.h>
-#include <termios.h>
-#include <unistd.h>
-#include <fcntl.h>
+#include "Utilities.h"
 
-int kbhit(void)
+
+int main()
 {
-  struct termios oldt, newt;
-  int ch;
-  int oldf;
 
-  tcgetattr(STDIN_FILENO, &oldt);
-  newt = oldt;
-  newt.c_lflag &= ~(ICANON | ECHO);
-  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-  oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-  fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
-
-  ch = getchar();
-
-  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-  fcntl(STDIN_FILENO, F_SETFL, oldf);
-
-  if(ch != EOF)
-  {
-    ungetc(ch, stdin);
-    return 1;
-  }
-
-  return 0;
-}
-
-int doSomething(int temp = 0)
-{
-    if (temp)
-        return 1;
-    return 0;
-}
-
-int main(int argc, const char * argv[]) {
-
-    while(true)
-    {
-        if(kbhit())
-        {
-            std::cout << "You pressed " << (char)getchar() <<std::endl;
-        }
-    }
+//    while(true)
+//    {
+//        if(kbhit())
+//        {
+//            std::cout << "You pressed " << (char)getchar() <<std::endl;
+//        }
+//    }
+    Engine engine;
+    engine.run();
         
 /*
  What the main function will look like:
@@ -68,7 +35,7 @@ int main(int argc, const char * argv[]) {
  
  NOTE: we could also probably add optional parameters to run() from argc and argv later on in case we want the user to customize the game.
  */
-
+//
 //    Engine e;
 //
 //    delete e.generateNewBlock(5);

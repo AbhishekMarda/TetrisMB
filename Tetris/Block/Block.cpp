@@ -27,19 +27,20 @@ Block::Block()
 
 Block::Block(std::vector<Unit> units):m_units(units)
 {
-    m_maxRight = MAX_COLS;
-    m_maxLeft = 0;
-    m_maxUp = 0;
-    m_maxDown = MAX_ROWS;
+    m_maxRight = 0;
+    m_maxLeft = MAX_COLS;
+    m_maxUp = MAX_ROWS;
+    m_maxDown = 0;
     for (Unit u : m_units)
     {
-        if (m_maxRight > u.m_col)   m_maxRight = u.m_col;
-        if (m_maxLeft < u.m_col)    m_maxLeft = u.m_col;
-        if (m_maxDown > u.m_row)    m_maxDown = u.m_row;
-        if (m_maxUp < u.m_row)      m_maxUp = u.m_row;
+        if (m_maxRight < u.m_col)   m_maxRight = u.m_col;
+        if (m_maxLeft > u.m_col)    m_maxLeft = u.m_col;
+        if (m_maxDown < u.m_row)    m_maxDown = u.m_row;
+        if (m_maxUp > u.m_row)      m_maxUp = u.m_row;
     }
     setGrid();
 }
+
 
 Block::Block(const Block& other):m_units(other.m_units), m_maxLeft(other.m_maxLeft), m_maxRight(other.m_maxRight), m_maxUp(other.m_maxUp), m_maxDown(other.m_maxDown)
 {
@@ -67,7 +68,7 @@ void Block::move(const Direction dir)
             for (Unit& unit : m_units)
                 ++unit.m_row;
             ++m_maxDown;
-            --m_maxUp;
+            ++m_maxUp;
             break;
         }
         case LEFT :
@@ -75,7 +76,7 @@ void Block::move(const Direction dir)
             for (Unit& unit : m_units)
                 --unit.m_col;
             --m_maxLeft;
-            ++m_maxRight;
+            --m_maxRight;
             break;
         }
         case RIGHT :
@@ -83,7 +84,7 @@ void Block::move(const Direction dir)
             for (Unit& unit : m_units)
                 ++unit.m_col;
             ++m_maxLeft;
-            --m_maxRight;
+            ++m_maxRight;
             break;
         }
         case UP: break; //FIXME: implement
@@ -108,7 +109,7 @@ void Block::setGrid()
     {
         for(int i_c = 0; i_c < 5; i_c++)
         {
-            if(i_r > 1 && i_r < 5 && i_c < 5 && i_c > 1)
+            if(i_r == 2 && i_c == 2)
             {
                 blockGrid[i_r][i_c] = OCCUPIED_CELL;
             }

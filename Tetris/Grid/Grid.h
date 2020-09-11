@@ -123,7 +123,7 @@ private:
     //Variables
     Block *m_activeBlock;
     char m_grid[MAX_ROWS][MAX_COLS];
-    char m_upblk_grid[PRINT_ROWS][BUFFER_COLS];
+    char m_upblk_grid[UPBLK_ROWS][UPBLK_COLS];
     
     //Functions
     ///Prints the top boundary of the grid
@@ -139,7 +139,7 @@ private:
     void leftMargin();
     
     ///Prints a particular row from m_upblk_grid
-    void printUpcomingRow(int& row);
+    void printUpcomingRow(const int& row);
 };
 
 /* INLINE FUNCTIONS */
