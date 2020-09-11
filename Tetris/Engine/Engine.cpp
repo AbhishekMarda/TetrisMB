@@ -281,7 +281,7 @@ void Engine::run()
         
         printBoard();
     }
-    
+    sleep_for(0.4s);
     gameOver();
 }
 void Engine::gameOver() const
