@@ -21,11 +21,11 @@ Engine::Engine() : m_points(0)
 {
     printInstructions();
     
-    m_grid.setActiveBlock(generateNewBlock(5));
+    m_grid.setActiveBlock(generateNewBlock(BLOCK_SIZE));
     const int MAX_QUEUED_BLOCKS = 3;
     
     for (int i =0; i< MAX_QUEUED_BLOCKS; ++i)
-        queueBlock(generateNewBlock(5));
+        queueBlock(generateNewBlock(BLOCK_SIZE));
         
 }
 
@@ -126,21 +126,21 @@ size_t Engine::getPoints() const
 Block* Engine::generateNewBlock(int num_blocks)
 {
 
-    bool board[5][5];
-    for(int i=0; i<5; ++i)
-        for (int j=0; j<5; ++j)
+    bool board[num_blocks][num_blocks];
+    for(int i=0; i<num_blocks; ++i)
+        for (int j=0; j<num_blocks; ++j)
             board[i][j]=0;
-    board[2][2] = 1;
+    board[num_blocks/2][num_blocks/2] = 1;
     std::vector<Unit> units(num_blocks);
-    units[0] = Unit(2, 2);
+    units[0] = Unit(num_blocks/2, num_blocks/2);
      
     std::vector<std::pair<int, int>> possibilities;
     
     //blocks around the middle
-    possibilities.push_back(std::make_pair(2, 1));
-    possibilities.push_back(std::make_pair(2, 3));
-    possibilities.push_back(std::make_pair(1, 2));
-    possibilities.push_back(std::make_pair(3, 2));
+    possibilities.push_back(std::make_pair(units[0].m_row, units[0].m_col-1));
+    possibilities.push_back(std::make_pair(units[0].m_row, units[0].m_col+1));
+    possibilities.push_back(std::make_pair(units[0].m_row-1, units[0].m_col));
+    possibilities.push_back(std::make_pair(units[0].m_row+1, units[0].m_col));
 
     for(int blocks_remaining = num_blocks-1; blocks_remaining>0; --blocks_remaining)
     {
@@ -154,7 +154,7 @@ Block* Engine::generateNewBlock(int num_blocks)
         
         curr_coords.first +=1; //one above mid position
         
-        if(curr_coords.first<5 &&
+        if(curr_coords.first<num_blocks &&
            !board[curr_coords.first][curr_coords.second] &&
            std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
            )
@@ -171,7 +171,7 @@ Block* Engine::generateNewBlock(int num_blocks)
         curr_coords.first+=1;
         curr_coords.second+=1; //right of the mid position
         
-        if(curr_coords.second<5 &&
+        if(curr_coords.second<num_blocks &&
            !board[curr_coords.first][curr_coords.second] &&
            std::find(possibilities.begin(),possibilities.end(),curr_coords)==possibilities.end()
            )

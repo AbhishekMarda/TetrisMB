@@ -40,7 +40,7 @@ const int GRID_LEFT_MARGIN = 5;
 const int GRID_TOP_MARGIN = 1;
 
 /* BLOCK SIZE */
-const int BLOCK_SIZE = 5;
+const int BLOCK_SIZE = 4;
 
 /* MOVE DIRECTIONS */
 const char L = 'a';
