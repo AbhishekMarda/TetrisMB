@@ -59,9 +59,9 @@ void Engine::printInstructions() const
     
     cout<<"More the eliminations, more your points. Consecutive eliminations will lead to more points, so place your blocks wisely!\n"<<endl;
     cout <<"You can place the block using the following methods:"<<endl;
-    cout <<"1. By pressing the left and right arrow keys to move the block left or right."<<endl;
-    cout <<"2. By pressing the up arrow key to rotate the block in a clockwise direction."<<endl;
-    cout <<"3. By pressing the down arrow key to push the block down faster."<<endl;
+    cout <<"1. By pressing the 'a' and 'd' arrow keys to move the block left or right respectively."<<endl;
+    cout <<"2. By pressing the up 'w' key to rotate the block in a clockwise direction."<<endl;
+    cout <<"3. By pressing the 's' arrow key to push the block down faster."<<endl;
     
     cout << endl<<"In the case that a block is not able to enter the grid completely, game will be over!"<<endl;
     
@@ -288,9 +288,9 @@ void Engine::gameOver() const
 {
     clearScreen();
     std::cout << BEGIN_RED_BGBLACK;
-    std::cout << "   ####      #       #     #      ######      #####    #        #    ######    ###### \n";
+    std::cout << "   ####      #       #     #      ######      #####    #        #    ######    #####  \n";
     std::cout << "  #         # #     # #   # #     #          #     #    #      #     #         #    # \n";
-    std::cout << "  #  ##    #####    #  # #  #     ######     #     #     #    #      ######    ###### \n";
+    std::cout << "  #  ##    #####    #  # #  #     ######     #     #     #    #      ######    #####  \n";
     std::cout << "  #   #   #     #   #   #   #     #          #     #      #  #       #         ###    \n";
     std::cout << "   ####   #     #   #       #     ######      #####        ##        ######    #  ### \n";
     std::cout << RESET_FORMAT;

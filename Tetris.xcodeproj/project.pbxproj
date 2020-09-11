@@ -70,8 +70,8 @@
 		8F84F29F24F6C7D100B44A13 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
-				8FF7BF4124F9006900E55F40 /* globals.h */,
 				DCE468CE250B289F00A2A45C /* Utilities */,
+				8FF7BF4124F9006900E55F40 /* globals.h */,
 				8F84F2A024F6C7D100B44A13 /* main.cpp */,
 				8FF7BF4924F9010500E55F40 /* Engine */,
 				8FF7BF4A24F9010B00E55F40 /* Grid */,
