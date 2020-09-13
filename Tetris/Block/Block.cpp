@@ -89,13 +89,13 @@ void Block::move(const Direction dir)
         }
         case UP :
         {
-            rotate(CLOCKWISE);
+            rotate();
             break;
         }
     }
 }
 
-void Block::rotate(const Rotation rotation)
+void Block::rotate()
 {
     int row_offset = m_units[0].m_row - 2;
     int col_offset = m_units[0].m_col - 2;

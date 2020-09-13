@@ -11,6 +11,8 @@
 #include <iostream>
 #include <string>
 
+#define TRUE_RANDOM_SIZE_4_DISTRUBUTION 0c
+
 /* TIME CONSTANTS*/
 const double /*could also be chrono*/ TICK_INTERVAL = 0.01;
 const double /*could also be chrono*/ BLOCK_DROP_INTERVAL = 0.75;

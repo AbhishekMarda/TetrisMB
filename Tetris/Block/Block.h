@@ -48,11 +48,10 @@ public:
     /**
      Roates the block in specified direction.
      
-     Rotates the block clockwise or counter clockwise. This function will not have information about bounds of the grid, thus it must be ensured that when it is called, the corresponding grid checks for boundary errors beforehand.
+     Rotates the block clockwise. This function will not have information about bounds of the grid, thus it must be ensured that when it is called, the corresponding grid checks for boundary errors beforehand.
      
-     @param rotation can be CLOCKWISE or CTRCLOCKWISE
      */
-    void rotate(const Rotation rotation);
+    void rotate();
     
     /**
      Retrieves all the units that constitute a block.

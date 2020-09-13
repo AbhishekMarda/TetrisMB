@@ -72,7 +72,7 @@ void Engine::printInstructions() const
     cin >> c;
     if (strncmp(c, "quit", 4)==0)
         exit(0);
-    else if (strncmp(c, "start", 4)!=0)
+    else if (strncmp(c, "start", 5)!=0)
     {
         cout<<"Try spelling another day"<<endl;
         exit(0);
@@ -125,6 +125,22 @@ size_t Engine::getPoints() const
 
 Block* Engine::generateNewBlock(int num_blocks)
 {
+#if TRUE_RANDOM_SIZE_4_DISTRUBUTION
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::minstd_rand0 generator (seed);
+    int code = generator()%(POSSIBLE_BLOCKS_OF_4+1);
+    
+    
+    Block* new_block = getHardcodedBlockOfSizeFour(code);
+    
+    int rotation = generator()%4;
+    for(int i=0; i<rotation;++i)
+        new_block->rotate();
+    
+    return new_block;
+    
+#else
+    
 
     bool board[num_blocks][num_blocks];
     for(int i=0; i<num_blocks; ++i)
@@ -194,6 +210,7 @@ Block* Engine::generateNewBlock(int num_blocks)
     }
     
    return ptr;
+#endif
 
 }
 
@@ -294,4 +311,86 @@ void Engine::gameOver() const
     std::cout << "  #   #   #     #   #   #   #     #          #     #      #  #       #         ###    \n";
     std::cout << "   ####   #     #   #       #     ######      #####        ##        ######    #  ### \n";
     std::cout << RESET_FORMAT;
+}
+
+
+Block* Engine::getHardcodedBlockOfSizeFour(int code) const
+{
+    std::vector<Unit> units;
+    
+    switch (code)
+    {
+        case 0:
+            /*
+                ####
+             */
+            for(int i=0; i<4; ++i)
+                units.push_back(Unit(2, i));
+            break;
+        case 1:
+            /*
+                 #
+                ###
+             */
+            for(int i=1; i<4; ++i)
+                units.push_back(Unit(3, i));
+            units.push_back(Unit(2,2));
+            break;
+        case 3:
+            /*
+                ###
+                  #
+             */
+            for(int i=1; i<4; ++i)
+                units.push_back(Unit(2, i));
+            units.push_back(Unit(3,3));
+            break;
+        case 4:
+            /*
+                    #
+                  ###
+             */
+            
+            for(int i=1; i<4; ++i)
+                units.push_back(Unit(3, i));
+            units.push_back(Unit(2,3));
+            break;
+            
+        case 5:
+            /*
+                ##
+                ##
+             */
+            for(int i=1; i<3; ++i)
+                units.push_back(Unit(2, i));
+            for(int i=1; i<3; ++i)
+                units.push_back(Unit(3, i));
+            break;
+            
+        case 6:
+            /*
+                 ##
+                ##
+             */
+            for(int i=2; i<4; ++i)
+                units.push_back(Unit(2, i));
+            for(int i=1; i<3; ++i)
+                units.push_back(Unit(3, i));
+            break;
+            
+        case 7:
+            /*
+                  ##
+                   ##
+             */
+            for(int i=1; i<3; ++i)
+                units.push_back(Unit(2, i));
+            for(int i=2; i<4; ++i)
+                units.push_back(Unit(3, i));
+            break;
+        
+        default: return nullptr;
+            
+    }
+    return new Block(units);
 }

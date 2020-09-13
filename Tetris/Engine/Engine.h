@@ -79,10 +79,22 @@ public:
     
     ///Returns the user's points
     size_t getPoints() const;
+    
+    /**
+     Get a premade block instead of a randomly generated one
+     
+     Use this function to get equal probability of a block appearing instead of having skewed probabilities in a random block generator
+     
+     @param code the code of the hardcoded block, from 0 to 5
+     */
+    Block* getHardcodedBlockOfSizeFour(int code) const;
+    
 private:
     Grid m_grid;
     size_t m_points; 
     std::queue<Block *> m_upcomingBlocks;
+    const int POSSIBLE_BLOCKS_OF_4 = 7;
+    
 };
 
 #endif /* Engine_h */
