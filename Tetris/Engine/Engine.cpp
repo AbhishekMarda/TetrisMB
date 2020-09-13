@@ -125,7 +125,7 @@ size_t Engine::getPoints() const
 
 Block* Engine::generateNewBlock(int num_blocks)
 {
-#if TRUE_RANDOM_SIZE_4_DISTRUBUTION
+#if TRUE_RANDOM_SIZE_4_DISTRIBUTION
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::minstd_rand0 generator (seed);
     int code = generator()%(POSSIBLE_BLOCKS_OF_4+1);
