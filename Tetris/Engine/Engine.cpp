@@ -134,9 +134,9 @@ Block* Engine::generateNewBlock(int num_blocks)
     Block* new_block = getHardcodedBlockOfSizeFour(code);
     
     int rotation = generator()%4;
-    for(int i=0; i<rotation;++i)
-        new_block->rotate();
-    
+//    for(int i=0; i<rotation;++i)
+//        new_block->rotate();
+//
     return new_block;
     
 #else
@@ -336,7 +336,7 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
                 units.push_back(Unit(3, i));
             units.push_back(Unit(2,2));
             break;
-        case 3:
+        case 2:
             /*
                 ###
                   #
@@ -345,7 +345,7 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
                 units.push_back(Unit(2, i));
             units.push_back(Unit(3,3));
             break;
-        case 4:
+        case 3:
             /*
                     #
                   ###
@@ -356,7 +356,7 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
             units.push_back(Unit(2,3));
             break;
             
-        case 5:
+        case 4:
             /*
                 ##
                 ##
@@ -367,7 +367,7 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
                 units.push_back(Unit(3, i));
             break;
             
-        case 6:
+        case 5:
             /*
                  ##
                 ##
@@ -378,7 +378,7 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
                 units.push_back(Unit(3, i));
             break;
             
-        case 7:
+        case 6:
             /*
                   ##
                    ##
@@ -392,5 +392,10 @@ Block* Engine::getHardcodedBlockOfSizeFour(int code) const
         default: return nullptr;
             
     }
-    return new Block(units);
+    Block* new_block = new Block(units);
+    for (const Unit& u : units)
+    {
+        new_block->blockGrid[u.m_row][u.m_col] = OCCUPIED_CELL;
+    }
+    return new_block;
 }

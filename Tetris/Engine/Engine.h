@@ -93,7 +93,7 @@ private:
     Grid m_grid;
     size_t m_points; 
     std::queue<Block *> m_upcomingBlocks;
-    const int POSSIBLE_BLOCKS_OF_4 = 7;
+    const int POSSIBLE_BLOCKS_OF_4 = 6;
     
 };
 
