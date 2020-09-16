@@ -212,7 +212,7 @@ void Grid::printUpcomingRow(const int& row)
     if(row >= UPBLK_ROWS)
     {
         if(row == 30)
-            std::cout << "     S C O R E";
+            std::cout << "       S C O R E";
         else if (row == 32)
             std::cout << "      <<  " << m_points << "  >>";
         std::cout << std::endl;
