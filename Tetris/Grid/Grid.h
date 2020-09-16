@@ -125,6 +125,13 @@ public:
      */
     bool moveActiveBlock(Direction dir);
     
+    /**
+    Updates user's points
+            
+    Placed in grid because points are to be shown alongside grid
+     */
+    void updatePoints(int points);
+    
 private:
     
     //Variables
@@ -147,6 +154,9 @@ private:
     
     ///Prints a particular row from m_upblk_grid
     void printUpcomingRow(const int& row);
+    
+    ///User points
+    int m_points;
 };
 
 /* INLINE FUNCTIONS */
@@ -159,6 +169,11 @@ inline bool Grid::isEmpty(int x_coord,int y_coord)
 inline void Grid::setActiveBlock(Block* active_block)
 {
     m_activeBlock = active_block;
+}
+
+inline void Grid::updatePoints(int points)
+{
+    m_points = points;
 }
 
 #endif /* Grih_h */

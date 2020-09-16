@@ -23,6 +23,7 @@ Grid::Grid()
     }
     
     m_activeBlock = new Block;
+    m_points = 0;
 }
 
 Grid::~Grid()
@@ -198,7 +199,7 @@ bool Grid::activeBlockFullyAppeared()
     {
         //if the row is less in than the buffer rows (i.e. the rows on top, then the block has not fully appeared.
         //we don't need to check for the column, since we anyway ensure that the block never goes past the column bounds
-        if(u.m_row < BUFFER_ROWS) //TODO: check if equality is allowed
+        if(u.m_row < BUFFER_ROWS) //equality is allowed but up to the brim filling == losing
             return false;
     }
     
@@ -210,6 +211,10 @@ void Grid::printUpcomingRow(const int& row)
 {
     if(row >= UPBLK_ROWS)
     {
+        if(row == 30)
+            std::cout << "     S C O R E";
+        else if (row == 32)
+            std::cout << "      <<  " << m_points << "  >>";
         std::cout << std::endl;
         return;
     }

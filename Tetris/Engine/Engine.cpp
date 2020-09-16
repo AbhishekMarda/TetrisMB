@@ -100,6 +100,7 @@ void Engine::printBoard()
         m_upcomingBlocks.push(temp);
     }
     
+    m_grid.updatePoints(getPoints());
     m_grid.printGrid();
     
 }
@@ -126,17 +127,11 @@ size_t Engine::getPoints() const
 Block* Engine::generateNewBlock(int num_blocks)
 {
 #if TRUE_RANDOM_SIZE_4_DISTRIBUTION
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    std::minstd_rand0 generator (seed);
-    int code = generator()%(POSSIBLE_BLOCKS_OF_4+1);
+
+    int code = randInt(0, POSSIBLE_BLOCKS_OF_4 - 1);
     
     
     Block* new_block = getHardcodedBlockOfSizeFour(code);
-    
-    int rotation = generator()%4;
-//    for(int i=0; i<rotation;++i)
-//        new_block->rotate();
-//
     return new_block;
     
 #else
@@ -227,7 +222,8 @@ int Engine::checkAndEliminateRows()
     {
         m_grid.fillEliminatedGapAt(rows_to_eliminate[i]);
     }
-    return 100 /*MAGIC NUMBERS YAY*/ * len; //FIXME: create the point system
+    
+    return 100 * len; //FIXME: create the point system
 }
 
 int Engine::move(Direction dir)
@@ -317,80 +313,123 @@ void Engine::gameOver() const
 Block* Engine::getHardcodedBlockOfSizeFour(int code) const
 {
     std::vector<Unit> units;
-    
     switch (code)
     {
         case 0:
             /*
                 ####
              */
-            for(int i=0; i<4; ++i)
-                units.push_back(Unit(2, i));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 0));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(2, 3));
             break;
+
         case 1:
             /*
                  #
                 ###
              */
-            for(int i=1; i<4; ++i)
-                units.push_back(Unit(3, i));
-            units.push_back(Unit(2,2));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(3, 1));
+            units.push_back(Unit(3, 2));
+            units.push_back(Unit(3, 3));
             break;
+
         case 2:
             /*
                 ###
                   #
              */
-            for(int i=1; i<4; ++i)
-                units.push_back(Unit(2, i));
-            units.push_back(Unit(3,3));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(2, 3));
+            units.push_back(Unit(3, 3));
             break;
+
         case 3:
             /*
                     #
                   ###
              */
-            
-            for(int i=1; i<4; ++i)
-                units.push_back(Unit(3, i));
-            units.push_back(Unit(2,3));
+
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(2, 3));
+            units.push_back(Unit(1, 3));
             break;
-            
+
         case 4:
             /*
                 ##
                 ##
              */
-            for(int i=1; i<3; ++i)
-                units.push_back(Unit(2, i));
-            for(int i=1; i<3; ++i)
-                units.push_back(Unit(3, i));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(3, 1));
+            units.push_back(Unit(3, 2));
             break;
-            
+
         case 5:
             /*
                  ##
                 ##
              */
-            for(int i=2; i<4; ++i)
-                units.push_back(Unit(2, i));
-            for(int i=1; i<3; ++i)
-                units.push_back(Unit(3, i));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 3));
+            units.push_back(Unit(3, 1));
+            units.push_back(Unit(3, 2));
             break;
-            
+
         case 6:
             /*
                   ##
                    ##
              */
-            for(int i=1; i<3; ++i)
-                units.push_back(Unit(2, i));
-            for(int i=2; i<4; ++i)
-                units.push_back(Unit(3, i));
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(3, 2));
+            units.push_back(Unit(3, 3));
+            break;
+
+        case 7:
+            /*
+                #
+                #
+                #
+                #
+             */
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(0, 2));
+            units.push_back(Unit(1, 2));
+            units.push_back(Unit(3, 2));
+            break;
+
+        case 8:
+            /*
+                 #
+                ##
+                 #
+             */
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(3, 2));
+            units.push_back(Unit(1, 2));
             break;
         
+        case 9:
+            /*
+                ##
+                ##
+            */
+            units.push_back(Unit(2, 2));
+            units.push_back(Unit(2, 1));
+            units.push_back(Unit(3, 1));
+            units.push_back(Unit(3, 2));
+            break;
+
         default: return nullptr;
-            
+
     }
     Block* new_block = new Block(units);
     for (const Unit& u : units)
