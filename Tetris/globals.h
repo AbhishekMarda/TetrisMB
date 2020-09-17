@@ -50,6 +50,9 @@ const char R = 'd';
 const char U = 'w';
 const char D = 's';
 
+/* QUIT GAME*/
+const char QUIT = 'q';
+
 /* TEXT COLORS IN LINUX CLI */
 const char BEGIN_CYAN_REGULAR[] = "\033[;36m";
 const char BEGIN_GREEN_REGULAR[] = "\033[;32m";

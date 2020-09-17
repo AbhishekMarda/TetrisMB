@@ -65,7 +65,9 @@ void Engine::printInstructions() const
     
     cout << endl<<"In the case that a block is not able to enter the grid completely, game will be over!"<<endl;
     
-    cout <<"Enjoy!"<<endl;
+    cout << endl <<"Press 'q' to quit at any time during the game. ";
+    
+    cout <<"Enjoy!"<<endl<<endl;
     
     cout<<"Type 'start' to start or 'quit' to quit now.\n";
     char c[10];
@@ -130,8 +132,11 @@ Block* Engine::generateNewBlock(int num_blocks)
 
     int code = randInt(0, POSSIBLE_BLOCKS_OF_4 - 1);
     
-    
     Block* new_block = getHardcodedBlockOfSizeFour(code);
+//
+//    int random_rotate = randInt(0, 3);
+//    for (int i=0; i<random_rotate; ++i)
+//        new_block->rotate();
     return new_block;
     
 #else
@@ -284,6 +289,8 @@ void Engine::run()
                     case U:
                         move(UP);
                         break;
+                    case QUIT:
+                        goto GAMEOVER;
                     default:
                         break;
                 }
@@ -294,7 +301,9 @@ void Engine::run()
         
         printBoard();
     }
+
     sleep_for(0.4s);
+GAMEOVER:
     gameOver();
 }
 void Engine::gameOver() const
@@ -306,6 +315,10 @@ void Engine::gameOver() const
     std::cout << "  #  ##    #####    #  # #  #     ######     #     #     #    #      ######    #####  \n";
     std::cout << "  #   #   #     #   #   #   #     #          #     #      #  #       #         ###    \n";
     std::cout << "   ####   #     #   #       #     ######      #####        ##        ######    #  ### \n";
+    std::cout << RESET_FORMAT;
+    
+    std::cout << BEGIN_CYAN_REGULAR;
+    std::cout << std::endl << "You scored "<< getPoints() << " points"<<std::endl;
     std::cout << RESET_FORMAT;
 }
 
