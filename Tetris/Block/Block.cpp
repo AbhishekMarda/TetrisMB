@@ -141,6 +141,12 @@ void Block::rotate()
         if (m_maxDown < u.m_row)    m_maxDown = u.m_row;
         if (m_maxUp > u.m_row)      m_maxUp = u.m_row;
     }
+    
+    setGrid(blockGrid);
+    for(const Unit& u : m_units)
+    {
+        blockGrid[u.m_row - row_offset][u.m_col - col_offset] = OCCUPIED_CELL;
+    }
 }
 
 

@@ -133,10 +133,11 @@ Block* Engine::generateNewBlock(int num_blocks)
     int code = randInt(0, POSSIBLE_BLOCKS_OF_4 - 1);
     
     Block* new_block = getHardcodedBlockOfSizeFour(code);
-//
-//    int random_rotate = randInt(0, 3);
-//    for (int i=0; i<random_rotate; ++i)
-//        new_block->rotate();
+
+    int random_rotate = randInt(0, 3);
+    for (int i=0; i<random_rotate; ++i)
+        new_block->setGrid(new_block->blockGrid);
+        new_block->rotate();
     return new_block;
     
 #else
