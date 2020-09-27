@@ -25,4 +25,4 @@ This implementation allows the user to modify the game experience based on their
 1. In `globals.h` change `BLOCK_SIZE` to the block size you would like to play with. By default, it is set to 4. Ensure that `TRUE_RANDOM_SIZE_4_DISTRIBUTION` is `0` before you play the game with a modified block size.
 
 ### Example 
-![screen recording](https://media.giphy.com/media/jJRTf7TBlc3mC3N1HI/giphy.gif)
+![screen recording](https://media.giphy.com/media/yBg3pRESJyeqk673UK/giphy.gif)
