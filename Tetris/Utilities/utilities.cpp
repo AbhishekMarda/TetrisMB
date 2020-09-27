@@ -3,7 +3,8 @@
 //  Tetris
 //
 //  Created by Sanchit Agarwal on 9/11/20.
-//  Copyright © 2020 Abhishek Marda. All rights reserved.
+//  WE DO NOT CLAIM OWNERSHIP OVER ANY OF THE FILES IN UTILITIES.H AND UTILITIES.CPP. WE HAVE PUT TOGETHER THIS CODE FROM VARIOUS SOURCES INCLUDING UCLA CS DEPARTMENT
+//  AND OTHER ONLINE AUTHORS
 //
 
 #include <stdio.h>
