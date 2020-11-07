@@ -23,7 +23,7 @@ public:
     ///Destructor calls delete on queued blocks
     ~Engine();
     
-    void run(); //FIXME: implement run
+    void run();
     
     /**
      Moves all blocks and prepares the grid for the next iteration.
